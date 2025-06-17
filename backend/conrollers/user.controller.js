@@ -134,10 +134,8 @@ export const updateProfile = async (req, res) => {
       linkedin,
       github,
     } = req.body || {}; // Safe fallback
-
     const file = req.file;
     let photoUrl;
-
     // Upload image if a file is provided
     if (file) {
       try {
@@ -152,7 +150,7 @@ export const updateProfile = async (req, res) => {
         });
       }
     }
-
+    
     const user = await User.findById(userId).select("-password");
     if (!user) {
       return res.status(404).json({
