@@ -20,7 +20,12 @@ app.use(cors({
 app.use("/api", userRouter);
 app.use("/api/v1/blog", blogRouter);
 app.use("/api/v1/comment", commentRouter);
-
+app.get('/',(req,res)=>{
+    res.send({
+        activeStatus:true,
+        error: false,
+    })
+})
 const PORT = process.env.PORT || 5000;
 connectToMongoDB()
 app.listen(PORT, () => { 
